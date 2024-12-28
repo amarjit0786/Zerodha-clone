@@ -1,0 +1,60 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link {
+  margin-left: 40px;
+  
+}
+/* product page in universe componet styling */
+.logoContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.logo {
+  
+  width:100% ;    /* Set a fixed width for logos */
+    height: 80px;   /* Set a fixed height for logos */
+    object-fit: contain;  /* Ensure logos maintain their aspect ratio */
+    object-position: center; /* Center the logos */
+    margin-bottom: 10px;  /* Centers the image if it's smaller than the container */
+}
+
+/* Support page in hero component style  */
+
+#supportHero{
+  background-color: rgb(56, 126, 209);
+  color: white;
+}
+
+#supportHero a{
+  color: white;
+}
+
+#supportWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 150px;
+}
+
+#supportHero input{
+  padding: 15px 35px;
+  width: 100%;
+  font-size: 19px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
