@@ -58,3 +58,40 @@ code {
   border: none;
   outline: none;
 }
+/* Style for the active nav item */
+.nav-link {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.87rem;
+   font-weight: 600; /* Optional: To highlight the active link */
+  color: #5a5a5ac2; /* Default color for nav links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease; /* Smooth color change */
+}
+
+/* Bottom border for the active nav item */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px; /* Space below the text */
+  left: 0;
+  width: 0; /* Start with no border */
+  height: 2px; /* Thickness of the border */
+  background-color: #007bff; /* Border color */
+  transition: width 0.3s ease; /* Smooth transition for the border */
+}
+
+/* When the nav item is active, expand the border */
+.nav-link.active-nav-item::after {
+  width: 100%; /* Expand the border fully */
+}
+
+/* Optional: Hover effect for better user experience */
+.nav-link:hover {
+  color: #007bff; /* Highlight color on hover */
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Expand border on hover as well */
+}
+

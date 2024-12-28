@@ -42,7 +42,7 @@ const Signup = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/"); // Redirect to home page after successful signup
+          navigate("/login"); // Redirect to home page after successful signup
         }, 2000);
       } else {
         handleError(message);
@@ -62,10 +62,10 @@ const Signup = () => {
 
   return (
     <div className="container mt-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
-          <div className="card shadow-lg">
-            <div className="card-body">
+      <div className="row justify-content-center ">
+        <div className="col-md-6 col-lg-4 mt-5">
+          <div className="card shadow-lg mt-5">
+            <div className="card-body ">
               <h2 className="text-center mb-4">Signup Account</h2>
               <form onSubmit={handleSubmit}>
                 <div className="mb-3">

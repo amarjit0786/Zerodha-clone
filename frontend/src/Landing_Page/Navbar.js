@@ -1,19 +1,33 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
   const navigate = useNavigate();
+  const location = useLocation(); // To track the current route
+
+  // Check login status when the component mounts
+  useEffect(() => {
+    const token = document.cookie
+      .split("; ")
+      .find(row => row.startsWith("token="))
+      ?.split("=")[1];
+    setIsLoggedIn(!!token); // Set logged-in state based on token presence
+  }, []);
 
   // Handle logout functionality
   const handleLogout = () => {
-    // Clear any user authentication details (e.g., cookies or localStorage)
+    // Clear the token cookie
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     setIsLoggedIn(false); // Update the login state to logged out
-    navigate("/login");  // Redirect to login page after logout
+    navigate("/login"); // Redirect to login page after logout
   };
 
+  // Function to determine if a nav item is active
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <nav className="navbar navbar-expand-lg border-bottom" style={{ backgroundColor: "#FFF" }}>
+    <nav className="navbar navbar-expand-lg border-bottom fixed-top " style={{ backgroundColor: "#FFF" }}>
       <div className="container p-2">
         <Link className="navbar-brand" to="/">
           <img src="media/images/logo.svg" style={{ width: "25%" }} alt="Logo" />
@@ -32,16 +46,56 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <form className="d-flex" role="search">
             <ul className="navbar-nav mb-lg-0">
-              {/* Conditionally render Signup and Login or Logout */}
+              {/* Common nav items */}
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${isActive("/about") ? "active-nav-item" : ""}`}
+                  to="/about"
+                >
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${isActive("/product") ? "active-nav-item" : ""}`}
+                  to="/product"
+                >
+                  Product
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${isActive("/pricing") ? "active-nav-item" : ""}`}
+                  to="/pricing"
+                >
+                  Pricing
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${isActive("/support") ? "active-nav-item" : ""}`}
+                  to="/support"
+                >
+                  Support
+                </Link>
+              </li>
+
+              {/* Conditionally render Signup/Login or Logout */}
               {!isLoggedIn ? (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link active" to="/signup">
+                    <Link
+                      className={`nav-link ${isActive("/signup") ? "active-nav-item" : ""}`}
+                      to="/signup"
+                    >
                       Signup
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link active" to="/login">
+                    <Link
+                      className={`nav-link ${isActive("/login") ? "active-nav-item" : ""}`}
+                      to="/login"
+                    >
                       Login
                     </Link>
                   </li>
@@ -53,28 +107,6 @@ function Navbar() {
                   </button>
                 </li>
               )}
-
-              {/* Common nav items */}
-              <li className="nav-item">
-                <Link className="nav-link active" to="/about">
-                  About
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/product">
-                  Product
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/pricing">
-                  Pricing
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link active" to="/support">
-                  Support
-                </Link>
-              </li>
             </ul>
           </form>
         </div>

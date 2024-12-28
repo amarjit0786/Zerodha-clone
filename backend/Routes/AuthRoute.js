@@ -6,4 +6,9 @@ router.post('/',userVerification)
 router.post('/signup', Signup)
 router.post('/login', Login)
 
+router.get('/dashboard', userVerification, (req, res) => {
+    res.json({ message: 'Welcome to the dashboard!' });
+});
+
+
 module.exports = router

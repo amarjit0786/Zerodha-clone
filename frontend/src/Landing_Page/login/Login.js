@@ -42,7 +42,7 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          navigate("/"); // Redirect to home page after successful login
+          window.location.href = "http://localhost:3001/dashboard"; // Redirect to dashboard page after successful login
         }, 2000);
       } else {
         handleError(message);
@@ -62,8 +62,8 @@ const Login = () => {
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
-          <div className="card shadow-lg">
+        <div className="col-md-6 col-lg-4 mt-5">
+          <div className="card shadow-lg mt-5">
             <div className="card-body">
               <h2 className="text-center mb-4">Login Account</h2>
               <form onSubmit={handleSubmit}>
