@@ -16,14 +16,28 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(
-    cors({
-      origin: "*",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      credentials: true,
-    })
-  );
-// app.use(cors());
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001']; // Frontend aur dashboard origins
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) { // Allow specific origins or non-browser requests
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true, // Cookies aur credentials allow karne ke liye
+};
+app.use(cors(corsOptions));
+// app.use(
+//     cors({
+//       origin: "http://localhost:3000",
+//       methods: ["GET", "POST", "PUT", "DELETE"],
+//       credentials: true,
+//     })
+//   );
+
   app.use(cookieParser());
   
   app.use(express.json());
