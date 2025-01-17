@@ -16,7 +16,7 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001']; // Frontend aur dashboard origins
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', '*']; // Frontend aur dashboard origins
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -30,13 +30,7 @@ const corsOptions = {
   credentials: true, // Cookies aur credentials allow karne ke liye
 };
 app.use(cors(corsOptions));
-// app.use(
-//     cors({
-//       origin: "http://localhost:3000",
-//       methods: ["GET", "POST", "PUT", "DELETE"],
-//       credentials: true,
-//     })
-//   );
+
 
   app.use(cookieParser());
   
