@@ -33,7 +33,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3002/login",
+        "https://zerodha-clone-backend-fcrd.onrender.com/login",
+        // "http://localhost:3002/login",
         { ...inputValue },
         { withCredentials: true }
       );
@@ -42,7 +43,8 @@ const Login = () => {
       if (success) {
         handleSuccess(message);
         setTimeout(() => {
-          window.location.href = "http://localhost:3001/dashboard"; // Redirect to dashboard page after successful login
+          window.location.href = "https://zerodha-clone-backend-fcrd.onrender.com/dashboard"; // Redirect to dashboard page after successful login
+          // window.location.href = "http://localhost:3001/dashboard"; // Redirect to dashboard page after successful login
         }, 2000);
       } else {
         handleError(message);
