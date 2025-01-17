@@ -16,7 +16,8 @@ const uri = process.env.MONGO_URL;
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', '*']; // Frontend aur dashboard origins
+const allowedOrigins = ['https://zerodha-clone-frontend-547a.onrender.com', 'https://zerodha-clone-dashboard-j82f.onrender.com']; // Frontend aur dashboard origins
+// const allowedOrigins = ['http://localhost:3000', 'http://localhost:3001', '*']; // Frontend aur dashboard origins
 
 const corsOptions = {
   origin: (origin, callback) => {
